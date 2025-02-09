@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import Monitor from '@/public/Screenshot 2025-01-19 105311.png';
-import Logo from '@/public/Screenshot 2025-01-19 120024.png';
+import Monitor from '../../../public/Screenshot 2025-01-19 105311.png';
+import Logo from '../../../public/Screenshot 2025-01-19 120024.png';
 
 const About: React.FC = () => {
     return (

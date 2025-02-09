@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import Step1 from '@/public/step1.png';
-import Step2 from '@/public/step2.png';
+import Step1 from '../../../public/Step1.png';
+import Step2 from '../../../public/step2.png';
 
 function GetStarted() {
   const Lsteps = [
