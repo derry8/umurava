@@ -16,9 +16,10 @@ db();
 // Middleware
 app.use(express.json());
 const corsOptions = {
-  origin: 'https://umurava-chi.vercel.app',
+  origin: ['https://umurava-chi.vercel.app', 'https://umurava-dashboard-zeta.vercel.app'],
   methods: 'GET,POST,PUT,DELETE',
 };
+
 
 app.use(cors(corsOptions)); 
 
