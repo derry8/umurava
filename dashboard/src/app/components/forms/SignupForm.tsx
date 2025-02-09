@@ -30,7 +30,7 @@ const SignupForm = () => {
   const [location, setLocation] = useState('');
   const [bio, setBio] = useState('');
   const [profession, setProfession] = useState('');
-  const [userType, setUserType] = useState('user');  // Default userType set to "user"
+  const [userType, setUserType] = useState('user'); 
   const dispatch = useDispatch();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -46,8 +46,23 @@ const SignupForm = () => {
         bio,
         profession,
         user_type: userType,
-        profile_picture: "profile picture",  // Include profile_picture directly
       });
+
+      const userData = {
+        firstname,
+        lastname,
+        email,
+        password,
+        location,
+        bio,
+        profession,
+        user_type: userType,
+        // profile_picture is removed since we don't want to send it
+      };
+    
+      // Log the data to the console
+      console.log("Submitting user data:", userData);
+    
 
       // Store the user data in Redux
       const user = response.data.user;

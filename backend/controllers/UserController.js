@@ -38,7 +38,7 @@ const createUser = async (req, res) => {
     const newUser = new User({
       firstname,
       lastname,
-      profile_picture,
+      profile_picture: profile_picture || null,
       user_type,
       profession,
       email,

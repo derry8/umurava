@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema(
   {
     firstname: { type: String, required: true },
     lastname: { type: String, required: true },
-    profile_picture: { type: String, required: true },
+    profile_picture: { type: String, required: false, default: null },
     user_type: { type: String, required: true },
     profession: { type: String, required: true },
     email: { type: String, required: true, unique: true },
