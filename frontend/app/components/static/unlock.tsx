@@ -1,5 +1,5 @@
 import React from 'react';
-import unlockimg from '../../../public/Umurava logo.png'; 
+import unlockimg from '../../../public/Unlock.png'; 
 import Image from 'next/image';
 
 const Unlock: React.FC = () => {
