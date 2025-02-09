@@ -15,7 +15,12 @@ db();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: 'https://umurava-chi.vercel.app',
+  methods: 'GET,POST,PUT,DELETE',
+};
+
+app.use(cors(corsOptions)); 
 
 // Use routes
 app.use('/umurava', challengeRoutes);

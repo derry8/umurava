@@ -1,10 +1,11 @@
-"use client"
+"use client";
 import React, { useEffect } from 'react';
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchChallenges } from '@/app/redux/challengesSlice';
 import ChallengeCard from '@/app/components/global/ChallengeCard';
 import { RootState, AppDispatch } from '@/app/redux/store'; // Adjust the import if needed
+import { ClipLoader } from 'react-spinners'; // Import ClipLoader spinner
 
 const ChallengesPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,7 +22,11 @@ const ChallengesPage: React.FC = () => {
   }, [dispatch, status]);
 
   if (status === 'loading') {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <ClipLoader color="#2B71F0" size={50} /> {/* Centered spinner */}
+      </div>
+    );
   }
 
   if (status === 'failed') {
