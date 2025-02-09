@@ -1,0 +1,15 @@
+{
+  "challenge_name": "UI/UX Design Challenge 2025",
+  "skills_needed": ["UX Research", "UI Design", "Wireframing", "Prototyping", "User Testing"],
+  "seniority_level": "Mid",
+  "duration": "2 months",
+  "deadline": "2025-04-01T23:59:59Z",
+  "status": "Open",
+  "money_prize": 3000.00,
+  "contact_email": "contact@uidesignchallenge.com",
+  "project_description": ".User Interface Design for each step\n.Creating wireframes to outline the basic structure and layout of the web and mobile app.\n.Designing visually appealing and user-friendly interfaces for the web and mobile apps focusing on usability and user experience.\n.Ensuring the web application works seamlessly across web, mobile, and tablet devices.\n.Provide a feedback session for in-development guidance",
+  "project_brief": "Design an intuitive and user-friendly interface for a web and mobile application that is responsive and meets business and user needs.",
+  "project_requirements": ".UX research to understand Project Requirements\n.Understanding User Needs\n.Understanding Business Goals\n.Determine interaction between users\n.Requirements Catalog",
+  "challenge_category": "UI/UX Design",
+  "deliverables": "Wireframes, UI Prototypes, User Flow Diagrams, Final UI Designs, Usability Test Results"
+}

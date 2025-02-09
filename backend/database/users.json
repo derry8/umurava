@@ -1,0 +1,11 @@
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "profile_picture": "url_to_profile_picture_1.jpg",
+    "user_type": "admin",
+    "profession": "Software Engineer",
+    "email": "john.doe@example.com",
+    "location": "New York, USA",
+    "bio": "Experienced software engineer specializing in front-end development.",
+    "password": "Hirwanda1?"
+}
