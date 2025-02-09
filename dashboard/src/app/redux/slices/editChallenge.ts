@@ -41,7 +41,7 @@ export const updateChallenge = createAsyncThunk(
   ) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/umurava/challenges/${id}`,
+        `https://umurava-nkeh.onrender.com/umurava/challenges/${id}`,
         challengeData
       );
       return response.data;

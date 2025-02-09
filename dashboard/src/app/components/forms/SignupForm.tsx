@@ -37,7 +37,7 @@ const SignupForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8000/umurava/user/signup', {
+      const response = await axios.post('https://umurava-nkeh.onrender.com/umurava/user/signup', {
         firstname,
         lastname,
         email,

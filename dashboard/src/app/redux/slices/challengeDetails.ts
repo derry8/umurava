@@ -33,7 +33,7 @@ const initialState: ChallengeDetailsState = {
 export const fetchChallengeDetails = createAsyncThunk(
   'challengeDetails/fetchChallengeDetails',
   async (id: string) => {
-    const response = await axios.get(`http://localhost:8000/umurava/challenges/${id}`);
+    const response = await axios.get(`https://umurava-nkeh.onrender.com/umurava/challenges/${id}`);
     return response.data.challenge; // Ensure this matches the structure returned from the API
   }
 );

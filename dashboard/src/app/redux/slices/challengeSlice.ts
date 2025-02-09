@@ -54,7 +54,7 @@ const initialState: ChallengesState = {
 export const fetchChallenges = createAsyncThunk(
   'challenges/fetchChallenges',
   async () => {
-    const response = await axios.get("http://localhost:8000/umurava/challenges");
+    const response = await axios.get("https://umurava-nkeh.onrender.com/umurava/challenges");
 
     // Mapping the response data with the correct types
     const formattedChallenges = response.data.challenges.map((challenge: ChallengeApiResponse) => ({

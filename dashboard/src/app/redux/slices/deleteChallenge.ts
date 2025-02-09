@@ -15,7 +15,7 @@ const initialState: DeleteChallengeState = {
 export const deleteChallenge = createAsyncThunk(
   'deleteChallenge/deleteChallenge',
   async (challengeId: string) => {
-    await axios.delete(`http://localhost:8000/umurava/challenges/${challengeId}`);
+    await axios.delete(`https://umurava-nkeh.onrender.com/umurava/challenges/${challengeId}`);
     return challengeId; // Return the ID to identify the deleted challenge
   }
 );

@@ -32,7 +32,7 @@ export const createChallenge = createAsyncThunk(
   'createChallenge/createChallenge',
   async (challengeData: ChallengeData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:8000/umurava/challenges/create', challengeData);
+      const response = await axios.post('https://umurava-nkeh.onrender.com/umurava/challenges/create', challengeData);
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
