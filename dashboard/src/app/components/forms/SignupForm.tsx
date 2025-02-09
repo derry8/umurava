@@ -3,7 +3,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/app/redux/slices/userSlice';
-import Image from 'next/image';
 
 // Define the User type
 interface User {
