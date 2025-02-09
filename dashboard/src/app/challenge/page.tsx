@@ -75,7 +75,7 @@ const Page = () => {
           onClick={() => setSelectedStatus("ongoing")}
         />
         {/* Show the "Create New Challenge" button only if the user is an admin */}
-        {user?.user_type === "user" && (
+        {user?.user_type === "admin" && (
           <Link href={'/newChallenge'} >
             <button className="flex items-center font-sans  space-x-[3px] bg-[#2B71F0] border-[#2B71F0] border-[1px] text-white px-[14px] py-[10px] rounded-[8px] transition">
               <Plus className="w-[14px] h-[14px] font-bold" />
