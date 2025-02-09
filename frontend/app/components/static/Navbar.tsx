@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Logo from '@/public/Screenshot 2025-01-18 101722.png';
+import Logo from '../../../public/Screenshot 2025-01-18 101722.png';
 import { usePathname } from 'next/navigation'; // Updated import
 
 const Navbar: React.FC = () => {

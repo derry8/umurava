@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import 'typeface-work-sans';
-import img1 from '@/public/image 1.png';
-import img2 from '@/public/Image 2.png'
+import img1 from '../../../public/image 1.png';
+import img2 from '../../../public/Image 2.png'
 
 const Hero: React.FC = () => {
   return (

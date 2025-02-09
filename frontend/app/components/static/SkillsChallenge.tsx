@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import img from '@/public/Screenshot 2025-01-26 151834.png';
+import img from '../../../public/Screenshot 2025-01-26 151834.png';
 import 'typeface-work-sans';
 
 const SkillsChallenges = () => {

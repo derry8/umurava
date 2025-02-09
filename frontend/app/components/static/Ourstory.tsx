@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Img from '@/public/Screenshot 2025-01-23 225725.png';
+import Img from '../../../public/Screenshot 2025-01-23 225725.png';
 
 const OurStory: React.FC = () => {
   return (

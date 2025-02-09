@@ -1,5 +1,5 @@
 import React from 'react';
-import unlockimg from '@/public/unlock.png'; // Import the image directly
+import unlockimg from '../../../public/unlock.png'; // Import the image directly
 import Image from 'next/image';
 
 const Unlock: React.FC = () => {

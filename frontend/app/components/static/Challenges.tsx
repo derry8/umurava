@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; // No need for Provider here anymore
 import ChallengeCard from '../global/ChallengeCard';
-import { RootState, AppDispatch } from '@/app/redux/store';
-import { fetchChallenges } from '@/app/redux/challengesSlice';
-import { Challenge } from '@/app/types/index';
+import { RootState, AppDispatch } from '../../../app/redux/store';
+import { fetchChallenges } from '../../../app/redux/challengesSlice';
+import { Challenge } from '../../../app/types/index';
 
 const Challenges: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();

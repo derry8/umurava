@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import BG from '@/public/challBG.png';
+import BG from '../../../public/challBG.png';
 import BriefcaseIcon from '@heroicons/react/24/outline/BriefcaseIcon';
 
 function WhatElse() {

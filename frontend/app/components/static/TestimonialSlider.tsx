@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import TestimonialCard from "@/app/components/global/TestimonialCard";
+import TestimonialCard from "../../../app/components/global/TestimonialCard";
 
 const testimonials = [
   {
