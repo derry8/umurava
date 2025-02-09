@@ -30,7 +30,6 @@ const SignupForm = () => {
   const [location, setLocation] = useState('');
   const [bio, setBio] = useState('');
   const [profession, setProfession] = useState('');
-  const [profilePicture] = useState('http://example.com/default-profile.jpg');  // Default profile picture
   const [userType, setUserType] = useState('user');  // Default userType set to "user"
   const dispatch = useDispatch();
 
@@ -47,7 +46,7 @@ const SignupForm = () => {
         bio,
         profession,
         user_type: userType,
-        profile_picture: "profile picture",  // Include profile_picture
+        profile_picture: "profile picture",  // Include profile_picture directly
       });
 
       // Store the user data in Redux
@@ -69,7 +68,7 @@ const SignupForm = () => {
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-6 bg-white text-black shadow-md rounded-lg">
       <h2 className="text-2xl mb-4 text-center">Sign Up</h2>
 
-      <div className="mb-4 ">
+      <div className="mb-4">
         <label htmlFor="firstname" className="block text-sm font-semibold">First Name</label>
         <input
           type="text"
@@ -144,7 +143,6 @@ const SignupForm = () => {
           className="w-full px-3 py-2 border rounded-md"
         />
       </div>
-
 
       {/* User Type selection */}
       <div className="mb-4">
