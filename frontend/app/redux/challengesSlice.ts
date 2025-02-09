@@ -16,7 +16,7 @@ interface BackendChallenge {
 export const fetchChallenges = createAsyncThunk<Challenge[], void>(
   'challenges/fetchChallenges',
   async () => {
-    const response = await fetch('http://localhost:8000/umurava/challenges');
+    const response = await fetch('https://umurava-nkeh.onrender.com/umurava/challenges');
     
     if (!response.ok) {
       throw new Error('Failed to fetch challenges');
