@@ -1,20 +1,21 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Define the type for the challenge data being passed to the backend
+// Define the type for the challenge data being sent to the backend
 export interface ChallengeData {
-  title: string;
-  skills: string[];
-  seniority: string;
-  timeline: string;
+  challenge_name: string;
+  skills_needed: string[];
+  seniority_level: string;
+  duration: string;
   deadline: string;
-  prize: number;
-  contactEmail: string;
-  projectDescription: string;
-  projectBrief: string;
-  projectRequirements: string;
-  category: string;
-  deliverable: string;
+  status: string;  // Added required field
+  money_prize: number;
+  contact_email: string;
+  project_description: string;
+  project_brief: string;
+  project_requirements: string;
+  challenge_category: string;
+  deliverables: string;
 }
 
 interface CreateChallengeState {
@@ -32,11 +33,13 @@ export const createChallenge = createAsyncThunk(
   'createChallenge/createChallenge',
   async (challengeData: ChallengeData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('https://umurava-nkeh.onrender.com/umurava/challenges/create', challengeData);
+      const response = await axios.post(
+        'https://umurava-nkeh.onrender.com/umurava/challenges/create',
+        challengeData
+      );
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        // AxiosError is properly typed
         return rejectWithValue(error.response?.data || 'An unexpected error occurred');
       }
       return rejectWithValue('An unexpected error occurred');
@@ -60,7 +63,6 @@ const createChallengeSlice = createSlice({
       })
       .addCase(createChallenge.rejected, (state) => {
         state.loading = false;
-        // No need to store the error, so we do nothing here
       });
   },
 });

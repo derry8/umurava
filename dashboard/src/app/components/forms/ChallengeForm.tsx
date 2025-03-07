@@ -3,7 +3,7 @@ import 'typeface-work-sans';
 import SweetAlert from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 import { createChallenge } from '@/app/redux/slices/createChallenge';
-import { AppDispatch } from '@/app/redux/store'; 
+import { AppDispatch } from '@/app/redux/store';
 import { ChallengeData } from '@/app/redux/slices/createChallenge';
 
 interface CreateChallengeState {
@@ -47,28 +47,30 @@ const ChallengeForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     const submissionData: ChallengeData = {
-      title: formData.title,  // Changed from challenge_name to title
-      skills: formData.skillsNeeded,  // Changed from skills_needed to skills
-      seniority: formData.seniorityLevel,  // Remains the same
-      timeline: formData.duration,  // Changed from duration to timeline (as per ChallengeData)
-      deadline: formData.deadline,  // Remains the same
-      prize: parseFloat(formData.prize),  // Converted from string to number
-      contactEmail: formData.email,  // Changed from contact_email to contactEmail
-      projectDescription: formData.description,  // Changed from project_description to projectDescription
-      projectBrief: formData.brief,  // Changed from project_brief to projectBrief
-      projectRequirements: formData.projectRequirements,  // Remains the same
-      category: formData.challengeCategory,  // Changed from challenge_category to category
-      deliverable: formData.deliverables,  // Changed from deliverables to deliverable
+      challenge_name: formData.title,  // Changed from title
+      skills_needed: formData.skillsNeeded,  // Changed from skills
+      seniority_level: formData.seniorityLevel,  // Changed from seniority
+      duration: formData.duration,  // Changed from timeline
+      deadline: formData.deadline,
+      status: "open",  // Set a default value if it's required
+      money_prize: parseFloat(formData.prize),  // Changed from prize
+      contact_email: formData.email,  // Changed from contactEmail
+      project_description: formData.description,  // Changed from projectDescription
+      project_brief: formData.brief,  // Changed from projectBrief
+      project_requirements: formData.projectRequirements,
+      challenge_category: formData.challengeCategory,  // Changed from category
+      deliverables: formData.deliverables  // Changed from deliverable
     };
-  
-    console.log(submissionData);  // Optional: to check the structure of the data
-  
-    dispatch(createChallenge(submissionData)); // Dispatch async action
-  };
-  
-  
+
+    console.log(submissionData);
+
+    dispatch(createChallenge(submissionData));
+};
+
+
+
   // Display success or error alert
   useEffect(() => {
     if (successMessage) {
@@ -250,7 +252,7 @@ const ChallengeForm: React.FC = () => {
               Cancel
             </button>
             <button type="submit" className="w-full sm:w-[50%] p-2 border-[1.5px] h-[55px] rounded-[8px] py-[16px] px-[24px] text-white bg-[#2B71F0] font-sans text-[16px] font-semibold">
-            {loading ? 'Creating...' : 'Create Challenge'}
+              {loading ? 'Creating...' : 'Create Challenge'}
             </button>
           </div>
         </form>
