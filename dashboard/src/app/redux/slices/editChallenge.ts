@@ -3,19 +3,19 @@ import axios from 'axios';
 
 // Define the structure of the challenge data (replace this with your actual structure)
 export interface ChallengeData {
-  title: string;
-  Status: 'open' | 'closed' | 'ongoing'; // Correctly defined Status type
-  skills: string[];
-  seniority: string;
-  timeline: string;
+  challenge_name: string;
+  status: 'open' | 'closed' | 'ongoing';
+  skills_needed: string[];
+  seniority_level: string;
+  duration: string;
   deadline: string;
-  prize: number;
-  contactEmail: string;
-  projectDescription: string;
-  projectBrief: string;
-  projectRequirements: string;
-  category: string;
-  deliverable: string;
+  money_prize: number;
+  contact_email: string;
+  project_description: string;
+  project_brief: string;
+  project_requirements: string;
+  challenge_category: string;
+  deliverables: string;
 }
 
 

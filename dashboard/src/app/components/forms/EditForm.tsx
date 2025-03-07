@@ -5,11 +5,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateChallenge } from '@/app/redux/slices/editChallenge';
 import SweetAlert from 'sweetalert2';
-import { useRouter } from 'next/navigation';
-import { useParams } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { AppDispatch } from '@/app/redux/store';
 import { fetchChallengeDetails } from '@/app/redux/slices/challengeDetails';
-import { ChallengeData } from '@/app/redux/slices/editChallenge'; // Import your fetch challenge action
+import { ChallengeData } from '@/app/redux/slices/editChallenge';
 
 interface ChallengeDetails {
   challenge_name: string;
@@ -41,52 +40,46 @@ interface RootState {
 
 const EditForm: React.FC = () => {
   const [formData, setFormData] = useState({
-    title: "",
+    challenge_name: "",
     deadline: "",
     duration: "",
-    prize: "",
-    email: "",
-    description: "",
-    brief: "",
-    tasks: "",
-    skillsNeeded: [] as string[],
-    seniorityLevel: "",
-    challengeCategory: "",
+    money_prize: "",
+    contact_email: "",
+    project_description: "",
+    project_brief: "",
+    skills_needed: [] as string[],
+    seniority_level: "",
+    challenge_category: "",
     deliverables: "",
-    projectRequirements: ""
+    project_requirements: ""
   });
 
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-  const { loading: stateLoading, error, successMessage } = useSelector((state: RootState) => state.editChallenge);
-  const { challengeDetails, loading: challengeLoading, error: challengeError } = useSelector((state: RootState) => state.challengeDetails); // Added selector for challenge details
-  
   const { id } = useParams() as { id: string };
 
-  // Fetch the existing challenge data on mount
+  const { loading: stateLoading, error, successMessage } = useSelector((state: RootState) => state.editChallenge);
+  const { challengeDetails, loading: challengeLoading, error: challengeError } = useSelector((state: RootState) => state.challengeDetails);
+
   useEffect(() => {
-    if (id) {
-      dispatch(fetchChallengeDetails(id));
-    }
+    if (id) dispatch(fetchChallengeDetails(id));
   }, [id, dispatch]);
 
-  // When challengeDetails is available, update the form data
   useEffect(() => {
     if (challengeDetails) {
       setFormData({
-        title: challengeDetails.challenge_name,
+        challenge_name: challengeDetails.challenge_name,
         deadline: challengeDetails.deadline,
         duration: challengeDetails.duration,
-        prize: challengeDetails.money_prize.toString(),
-        email: challengeDetails.contact_email,
-        description: challengeDetails.project_description,
-        brief: challengeDetails.project_brief,
-        tasks: "", // Assuming you don't have tasks data in the response
-        skillsNeeded: challengeDetails.skills_needed,
-        seniorityLevel: challengeDetails.seniority_level,
-        challengeCategory: challengeDetails.challenge_category,
+        money_prize: challengeDetails.money_prize.toString(),
+        contact_email: challengeDetails.contact_email,
+        project_description: challengeDetails.project_description,
+        project_brief: challengeDetails.project_brief,
+        skills_needed: challengeDetails.skills_needed,
+        seniority_level: challengeDetails.seniority_level,
+        challenge_category: challengeDetails.challenge_category,
         deliverables: challengeDetails.deliverables,
-        projectRequirements: challengeDetails.project_requirements
+        project_requirements: challengeDetails.project_requirements
       });
     }
   }, [challengeDetails]);
@@ -97,41 +90,30 @@ const EditForm: React.FC = () => {
 
   const handleSkillsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    const skillsNeeded = value ? value.split(',').map(skill => skill.trim()) : [];
-    setFormData({ ...formData, skillsNeeded });
+    setFormData({ ...formData, skills_needed: value.split(',').map(skill => skill.trim()) });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const submissionData: ChallengeData = {
-      skills: formData.skillsNeeded,
-      seniority: formData.seniorityLevel,
-      timeline: formData.duration,
-      title: formData.title,
+      challenge_name: formData.challenge_name,
+      skills_needed: formData.skills_needed,
+      seniority_level: formData.seniority_level,
+      duration: formData.duration,
       deadline: formData.deadline,
-      Status: 'open', 
-      prize: Number(formData.prize),
-      contactEmail: formData.email,
-      projectDescription: formData.description,
-      projectBrief: formData.brief,
-      projectRequirements: formData.projectRequirements,
-      category: formData.challengeCategory,
-      deliverable: formData.deliverables
+      status: 'open',
+      money_prize: parseFloat(formData.money_prize),
+      contact_email: formData.contact_email,
+      project_description: formData.project_description,
+      project_brief: formData.project_brief,
+      project_requirements: formData.project_requirements,
+      challenge_category: formData.challenge_category,
+      deliverables: formData.deliverables
     };
-    
-  
+
     dispatch(updateChallenge({ id, challengeData: submissionData }));
   };
-  
 
-  useEffect(() => {
-    if (id && typeof id === 'string') {
-      dispatch(fetchChallengeDetails(id));
-    }
-  }, [id, dispatch]);
-  
-   // make sure dispatch is included if necessary
-  
   useEffect(() => {
     if (successMessage) {
       SweetAlert.fire({
@@ -139,10 +121,10 @@ const EditForm: React.FC = () => {
         text: successMessage,
         icon: 'success',
       }).then(() => {
-        router.push(`/challenge/${id}`); // Redirect after success
+        router.push(`/challenge/${id}`);
       });
     }
-  
+
     if (error) {
       SweetAlert.fire({
         title: 'Error!',
@@ -150,8 +132,8 @@ const EditForm: React.FC = () => {
         icon: 'error',
       });
     }
-  }, [successMessage, error, id, router]); // include id and router
-  
+  }, [successMessage, error, id, router]);
+
   return (
     <div className="h-full w-full p-6">
       <div className="w-full max-w-[624px] mx-auto py-[32px] px-[24px] border-[1px] border-[#E4E7EC] gap-[20px] rounded-[10px] bg-white">
@@ -172,7 +154,7 @@ const EditForm: React.FC = () => {
               <input
                 type="text"
                 name="title"
-                value={formData.title}
+                value={formData.challenge_name}
                 placeholder="Enter Title"
                 className="w-full border-[1px] text-black rounded-[6px] p-[16px] gap-[12px] h-[56px] border-[#FA9874] focus:ring focus:ring-[#FA9874]"
                 onChange={handleChange}
@@ -211,7 +193,7 @@ const EditForm: React.FC = () => {
                 <input
                   type="text"
                   name="prize"
-                  value={formData.prize}
+                  value={formData.money_prize}
                   placeholder="Prize"
                   className="w-full border-[1px] text-black rounded-[6px] p-[16px] gap-[12px] h-[56px]"
                   onChange={handleChange}
@@ -222,7 +204,7 @@ const EditForm: React.FC = () => {
                 <input
                   type="email"
                   name="email"
-                  value={formData.email}
+                  value={formData.contact_email}
                   placeholder="Email"
                   className="w-full border-[1px] text-black rounded-[6px] p-[16px] gap-[12px] h-[56px]"
                   onChange={handleChange}
@@ -236,7 +218,7 @@ const EditForm: React.FC = () => {
               <input
                 type="text"
                 name="skillsNeeded"
-                value={formData.skillsNeeded.join(', ')}
+                value={formData.skills_needed.join(', ')}
                 placeholder="Enter skills needed"
                 className="w-full border-[1px] text-black rounded-[6px] p-[16px] gap-[12px] h-[56px]"
                 onChange={handleSkillsChange}
@@ -249,7 +231,7 @@ const EditForm: React.FC = () => {
               <input
                 type="text"
                 name="seniorityLevel"
-                value={formData.seniorityLevel}
+                value={formData.seniority_level}
                 placeholder="Seniority level"
                 className="w-full border-[1px] text-black rounded-[6px] p-[16px] gap-[12px] h-[56px]"
                 onChange={handleChange}
@@ -262,7 +244,7 @@ const EditForm: React.FC = () => {
               <input
                 type="text"
                 name="challengeCategory"
-                value={formData.challengeCategory}
+                value={formData.challenge_category}
                 placeholder="Enter challenge category"
                 className="w-full border-[1px] text-black rounded-[6px] p-[16px] gap-[12px] h-[56px]"
                 onChange={handleChange}
@@ -287,7 +269,7 @@ const EditForm: React.FC = () => {
               <label htmlFor="projectRequirements" className="text-[#475367] font-medium text-[14px] font-sans">Project Requirements</label>
               <textarea
                 name="projectRequirements"
-                value={formData.projectRequirements}
+                value={formData.project_requirements}
                 placeholder="Enter project requirements..."
                 maxLength={500}
                 className="w-full border-[1px] text-black border-gray-300 gap-[12px] h-[114px] py-[22px] px-[16px] rounded-[6px] resize-none"
@@ -301,7 +283,7 @@ const EditForm: React.FC = () => {
               <label htmlFor="brief" className="text-[#475367] font-medium text-[14px] font-sans">Project Brief</label>
               <textarea
                 name="brief"
-                value={formData.brief}
+                value={formData.project_brief}
                 placeholder="Enter project brief..."
                 maxLength={500}
                 className="w-full border-[1px] text-black border-gray-300 gap-[12px] h-[114px] py-[22px] px-[16px] rounded-[6px] resize-none"
@@ -315,7 +297,7 @@ const EditForm: React.FC = () => {
               <label htmlFor="description" className="text-[#475367] font-medium text-[14px] font-sans">Project Description</label>
               <textarea
                 name="description"
-                value={formData.description}
+                value={formData.project_description}
                 placeholder="Enter detailed project description..."
                 maxLength={1000}
                 className="w-full border-[1px] text-black border-gray-300 gap-[12px] h-[114px] py-[22px] px-[16px] rounded-[6px] resize-none"
