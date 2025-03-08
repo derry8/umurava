@@ -51,7 +51,7 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge }) => {
         <div className="-mx-4 w-[calc(100%+32px)] h-[1.5px] mt-4 bg-[#E4E7EC]"></div>
 
         <div className="w-full mt-6 flex items-center justify-end">
-          <Link href={`/challenge/${challenge.id}`}>
+          <Link href={`https://umurava-dashboard-zeta.vercel.app/challenge/${challenge.id}`}>
             <button className="bg-[#2B71F0] text-white text-sm py-2 px-6 rounded-lg">View Challenge</button>
           </Link>
         </div>
