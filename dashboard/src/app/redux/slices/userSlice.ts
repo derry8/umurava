@@ -6,7 +6,7 @@ interface User {
   lastname: string;
   email: string;
   location: string;
-  user_type:string;
+  user_type: string;
   bio: string;
   profession: string;
   profile_picture: string;
@@ -21,10 +21,10 @@ const initialState: UserState = {
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
-    setUser(state, action: PayloadAction<User>) {
+    setUser(state, action: PayloadAction<User | null>) {  
       state.user = action.payload;
     },
     clearUser(state) {

@@ -10,6 +10,7 @@ import ChallengeCard from '../components/global/ChallengeCard';
 import { Challenge } from '@/app/types/index';
 import { useRouter } from "next/navigation";
 import { AppDispatch } from '@/app/redux/store';
+import { ClipLoader } from 'react-spinners';
 import Link from "next/link";
 
 const Page = () => {
@@ -37,7 +38,14 @@ const Page = () => {
     return challenge.status.toLowerCase() === selectedStatus.toLowerCase();
   });
 
-  if (loading) return <p>Loading challenges...</p>;
+ 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <ClipLoader color="#2B71F0" size={50} /> {/* Centered spinner */}
+      </div>
+    );
+  }
 
   return (
     <div className="p-6">

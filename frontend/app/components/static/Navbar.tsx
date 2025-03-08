@@ -118,7 +118,7 @@ const Navbar: React.FC = () => {
           </span>
         </Link>
 
-        <Link href="/join">
+        <Link href="https://umurava-dashboard-zeta.vercel.app/">
           <button className="font-DM-Sans bg-[#041738] w-[90%] h-[46px] px-[24px] rounded-[6px] opacity-100 cursor-pointer mt-4 mx-auto">
             <span className="text-white text-[14px] leading-[21px] tracking-[1px] text-center">
               Join the Program

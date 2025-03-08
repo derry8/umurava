@@ -9,6 +9,7 @@ import { RootState } from '@/app/redux/store';
 import { fetchChallenges } from '@/app/redux/slices/challengeSlice';  
 import { AppDispatch } from '@/app/redux/store';  
 import SummaryCard from "./components/global/SummaryCard";
+import { ClipLoader } from 'react-spinners';
 
 export default function Home() {
   const router = useRouter();
@@ -36,7 +37,11 @@ export default function Home() {
 
   // If loading challenges, show a loading state
   if (loading) {
-    return <p>Loading challenges...</p>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <ClipLoader color="#2B71F0" size={50} /> {/* Centered spinner */}
+      </div>
+    );
   }
 
 
@@ -67,21 +72,21 @@ export default function Home() {
       {user?.user_type === 'admin' ? (
        <div className="space-y-[16px]">
        <div className="flex gap-[16px] flex-wrap md:flex-nowrap">
-         <SummaryCard title="Total Challenge" value={29405} percentageChange={15} />
-         <SummaryCard title="Total Challenge" value={29405} percentageChange={15} />
+         <SummaryCard title="Total Challenges" value={29405} percentageChange={15} />
+         <SummaryCard title="Total Participants" value={29405} percentageChange={15} />
        </div>
        <div className="flex gap-[16px] flex-wrap md:flex-nowrap">
-         <SummaryCard title="Total Challenge" value={29405} percentageChange={15} />
-         <SummaryCard title="Total Challenge" value={29405} percentageChange={15} />
-         <SummaryCard title="Total Challenge" value={29405} percentageChange={15} />
+         <SummaryCard title="Completed Challenge" value={29405} percentageChange={15} />
+         <SummaryCard title="Open Challenge" value={29405} percentageChange={15} />
+         <SummaryCard title="Ongoing Challenge" value={29405} percentageChange={15} />
        </div>
      </div>
      
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[20px]">
-          <StatsCard label="Completed Challenges" value="05" />
-          <StatsCard label="Open Challenges" value="200" />
-          <StatsCard label="Ongoing Challenges" value="200" />
+          <StatsCard label="Completed Challenge" value="03" />
+          <StatsCard label="Open Challenges" value="20" />
+          <StatsCard label="Ongoing Challenges" value="30" />
         </div>
       )}
 
