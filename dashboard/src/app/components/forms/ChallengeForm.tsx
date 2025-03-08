@@ -106,7 +106,7 @@ const ChallengeForm: React.FC = () => {
               type="text"
               name="title"
               placeholder="Enter Title"
-              className="w-full border-[1px] text-black rounded-[6px] p-[16px] gap-[12px] h-[56px] border-[#FA9874] focus:ring focus:ring-[#FA9874]"
+              className="w-full border-[1px] text-black rounded-[6px] p-[16px] gap-[12px] h-[56px] focus:ring "
               onChange={handleChange}
             />
           </div>
