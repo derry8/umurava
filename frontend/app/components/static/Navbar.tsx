@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Join Button (Hidden on small screens) */}
-      <Link href="/join">
+      <Link href="https://umurava-dashboard-zeta.vercel.app/">
         <button className="hidden lg:block font-DM-Sans bg-[#041738] w-[207px] h-[46px] px-[24px] rounded-[6px] border-[1px] border-gray-300 opacity-100 cursor-pointer">
           <span className="text-white text-[14px] leading-[21px] tracking-[1px] text-center">
             Join the Program
