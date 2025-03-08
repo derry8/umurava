@@ -7,6 +7,7 @@ import Breadcrumb from '../../components/global/breadcrumbs';
 import { fetchChallengeDetails } from '@/app/redux/slices/challengeDetails'; // Import the thunk action
 import { RootState } from '@/app/redux/store';
 import { AppDispatch } from '@/app/redux/store';
+import { ClipLoader } from 'react-spinners';
 
 const Page = () => {
   const { id } = useParams(); // Access dynamic `id` from params (not query)
@@ -23,9 +24,12 @@ const Page = () => {
     }
   }, [id, dispatch]);
 
-  // Handle loading and error states
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <ClipLoader color="#2B71F0" size={50} /> {/* Centered spinner */}
+      </div>
+    );
   }
   console.log(challengeDetails);
 
